@@ -62,9 +62,10 @@ function App() {
             });
 
             setCart(newCart);
+            console.log(newCart);
+        } else {
+            setCart([...cart, { ...targetProduct, count: 1 }]);
         }
-
-        setCart([...cart, { ...targetProduct, count: 1 }]);
     }
 
     return (
