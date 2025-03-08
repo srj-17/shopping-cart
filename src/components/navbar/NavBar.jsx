@@ -1,7 +1,7 @@
 import styles from "./NavBar.module.css";
 import { Link } from "react-router-dom";
 
-function NavBar() {
+function NavBar({ cartProductsCount }) {
     return (
         <nav className={styles.navbar}>
             <div className={styles.logo}>
@@ -23,6 +23,9 @@ function NavBar() {
                 <li className={styles.listItem}>
                     <Link className={styles.link} to="cart">
                         Cart
+                        <div className={styles.cartProductsCount}>
+                            ({cartProductsCount})
+                        </div>
                     </Link>
                 </li>
             </ul>

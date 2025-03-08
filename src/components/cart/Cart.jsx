@@ -11,8 +11,8 @@ function Cart() {
         setCart([]);
     }
 
-    const totalProducts = cart.reduce((price, item) => {
-        return price + item.count;
+    const totalProducts = cart.reduce((sum, item) => {
+        return sum + item.count;
     }, 0);
 
     const totalPrice = cart.reduce((price, item) => {
@@ -25,7 +25,7 @@ function Cart() {
         <div className="carts-page">
             <header className={styles.header}>User Cart</header>
             {cart.length !== 0 ? (
-                <div className="checkout-container">
+                <div className={styles.checkoutContainer}>
                     <div className="checkout-info">
                         <div className="product-count">
                             Number of products purchased: {totalProducts}
@@ -63,7 +63,7 @@ function Cart() {
                                           Rating: {item.rating.rate}
                                       </div>
                                       <div className="count">
-                                          Count: {item.count}
+                                          Quantity: {item.count}
                                       </div>
                                   </div>
                               </div>

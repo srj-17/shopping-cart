@@ -68,9 +68,13 @@ function App() {
         }
     }
 
+    const totalCartProducts = cart.reduce((sum, item) => {
+        return sum + item.count;
+    }, 0);
+
     return (
         <div className="container">
-            <NavBar />
+            <NavBar cartProductsCount={totalCartProducts} />
             <Outlet
                 context={{
                     products,
