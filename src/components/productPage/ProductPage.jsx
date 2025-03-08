@@ -74,6 +74,14 @@ function ProductPage() {
                                         Rating: {product.rating.rate}
                                     </div>
                                 </div>
+                                <div className="add-to-cart">
+                                    <button
+                                        id={product.id}
+                                        className={styles.button}
+                                    >
+                                        Add to cart
+                                    </button>
+                                </div>
                             </div>
                         );
                     })}
