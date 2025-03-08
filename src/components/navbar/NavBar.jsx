@@ -6,7 +6,7 @@ function NavBar() {
         <nav className={styles.navbar}>
             <div className={styles.logo}>
                 <Link to="/" className={styles.link}>
-                    Logo
+                    Kapada
                 </Link>
             </div>
             <ul className={styles.list}>

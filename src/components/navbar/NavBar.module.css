@@ -1,20 +1,28 @@
 .logo {
     font-size: 2rem;
+    font-family: "Italiana", sans-serif;
+    font-weight: bold;
 }
 
 .navbar {
     display: flex;
+    padding: 20px 40px;
+    font-family: "Roboto", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 350;
 }
 
 .list {
     display: flex;
     flex: 1;
+    align-self: center;
     justify-content: end;
     gap: 20px;
 }
 
 .list-item {
     list-style-type: none;
+    display: block;
 }
 
 .link {
