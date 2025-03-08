@@ -1,8 +1,15 @@
 import { useOutletContext } from "react-router-dom";
 import styles from "./Cart.module.css";
+import CheckOutDialog from "./CheckoutDialog";
 
 function Cart() {
-    const { cart } = useOutletContext();
+    const { cart, setCart } = useOutletContext();
+
+    function checkOut() {
+        const dialog = document.querySelector(".checkout-dialog");
+        dialog.showModal();
+        setCart([]);
+    }
 
     const totalProducts = cart.reduce((price, item) => {
         return price + item.count;
@@ -64,6 +71,7 @@ function Cart() {
                       })
                     : "Cart is empty"}
             </div>
+            <CheckOutDialog />
         </div>
     );
 }
