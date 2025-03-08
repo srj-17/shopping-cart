@@ -1,0 +1,22 @@
+.logo {
+    font-size: 2rem;
+}
+
+.navbar {
+    display: flex;
+}
+
+.list {
+    display: flex;
+    flex: 1;
+    justify-content: end;
+    gap: 20px;
+}
+
+.list-item {
+    list-style-type: none;
+}
+
+.link {
+    text-decoration: none;
+}
