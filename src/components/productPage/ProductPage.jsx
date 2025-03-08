@@ -1,44 +1,8 @@
-import { useState, useEffect } from "react";
+import { useOutletContext } from "react-router-dom";
 import styles from "./ProductPage.module.css";
 
-function useProducts() {
-    const [products, setProducts] = useState(null);
-    const [error, setError] = useState(null);
-    const [loading, setLoading] = useState(true);
-
-    useEffect(() => {
-        fetch("https://fakestoreapi.com/products")
-            .then((response) => {
-                if (response.status >= 400) throw new Error("server error");
-                return response.json();
-            })
-            .then((JSONResponse) => {
-                // only return clothing data
-                const requiredData = JSONResponse.filter((data) => {
-                    if (/clothing/i.test(data.category)) return true;
-                }).map((data) => {
-                    return {
-                        id: data.id,
-                        title: data.title,
-                        price: data.price,
-                        rating: data.rating,
-                        image: data.image,
-                    };
-                });
-                setProducts(requiredData);
-            })
-            .catch((error) => {
-                setError(error);
-            })
-            .finally(() => {
-                setLoading(false);
-            });
-    }, []);
-    return { products, error, loading };
-}
-
 function ProductPage() {
-    const { products, loading, error } = useProducts();
+    const { products, loading, error, addToCartHandler } = useOutletContext();
 
     if (error)
         return (
@@ -78,6 +42,7 @@ function ProductPage() {
                                     <button
                                         id={product.id}
                                         className={styles.button}
+                                        onClick={addToCartHandler}
                                     >
                                         Add to cart
                                     </button>
