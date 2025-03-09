@@ -1,10 +1,11 @@
 import { useOutletContext } from "react-router-dom";
 import styles from "./ProductPage.module.css";
 import { useNavigate } from "react-router-dom";
+import StarsFromRatings from "../Stars";
 
 function ProductPage() {
     const navigate = useNavigate();
-    const { products, loading, error, addToCartHandler } = useOutletContext();
+    const { products, loading, error } = useOutletContext();
 
     function handleProductClick(e) {
         const id = e.target.closest(".product-container").id;
@@ -27,7 +28,7 @@ function ProductPage() {
                 <div className={styles.productsContainer}>
                     {products.map((product) => {
                         return (
-                            <div
+                            <button
                                 className={
                                     styles.productContainer +
                                     " product-container"
@@ -41,16 +42,20 @@ function ProductPage() {
                                     src={product.image}
                                     alt={product.title}
                                 />
-                                <div className="product-info">
-                                    <div className="price">
-                                        ${product.price}
+                                <div className={styles.productInfo}>
+                                    <div className={styles.price}>
+                                        $ {product.price}
                                     </div>
-                                    <div className="title">{product.title}</div>
+                                    <div className={styles.title}>
+                                        {product.title}
+                                    </div>
                                     <div className="rating">
-                                        Rating: {product.rating.rate}
+                                        <StarsFromRatings
+                                            rating={product.rating.rate}
+                                        />
                                     </div>
                                 </div>
-                            </div>
+                            </button>
                         );
                     })}
                 </div>

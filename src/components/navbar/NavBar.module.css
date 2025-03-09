@@ -28,6 +28,19 @@
 
 .link {
     text-decoration: none;
+    color: #404e77;
+}
+
+.link:active {
+    color: var(--accent);
+}
+
+.logo {
+    color: #404e77;
+}
+
+.logo:active {
+    color: #404e77;
 }
 
 .cart-products-count {
@@ -37,7 +50,7 @@
     transform: scale(0.7) translate(80%, -80%);
     rotate: 0;
     transition: rotate 0.2s;
-    color: red;
+    color: var(--accent);
 }
 
 .cart-products-count:hover {

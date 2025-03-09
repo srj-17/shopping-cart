@@ -5,6 +5,13 @@
     line-height: 1.5;
 }
 
+:root {
+    --bg: #fff8f0;
+    --primary: #1e1e24;
+    --accent: #92140c;
+    --secondary: #397367;
+}
+
 h1,
 h2,
 h3,
@@ -12,4 +19,15 @@ h4,
 h5 {
     font-size: 1rem;
     font-weight: normal;
+}
+
+button {
+    border: 0;
+    background: none;
+    font: inherit;
+    padding: 0;
+}
+
+.container {
+    position: relative;
 }
