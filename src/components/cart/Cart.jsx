@@ -2,6 +2,7 @@ import { useOutletContext } from "react-router-dom";
 import styles from "./Cart.module.css";
 import CheckOutDialog from "./CheckoutDialog";
 import { roundedValue } from "../../utilFunctions";
+import StarsFromRatings from "../Stars";
 
 function Cart() {
     const { cart, setCart } = useOutletContext();
@@ -23,21 +24,32 @@ function Cart() {
     }, 0);
 
     return (
-        <div className="carts-page">
+        <div className={styles.cartsPage}>
             <header className={styles.header}>User Cart</header>
             {cart.length !== 0 ? (
                 <div className={styles.checkoutContainer}>
-                    <div className="checkout-info">
+                    <div className={styles.checkoutInfo}>
                         <div className="product-count">
-                            Number of products purchased: {totalProducts}
+                            Number of products purchased:
+                            <span className={styles.productsCount}>
+                                {" "}
+                                {totalProducts}{" "}
+                            </span>
                         </div>
                         <div className="total-price">
-                            Total Price: ${roundedValue(totalPrice, 1)}
+                            Total Price:
+                            <span className={styles.price}>
+                                {" "}
+                                $ {roundedValue(totalPrice, 1)}{" "}
+                            </span>
                         </div>
                     </div>
                     <div className="checkout-btn-container">
-                        <button className="checkoutButton" onClick={checkOut}>
-                            Checkout
+                        <button
+                            className={styles.checkoutButton}
+                            onClick={checkOut}
+                        >
+                            Check Out
                         </button>
                     </div>
                 </div>
@@ -45,33 +57,45 @@ function Cart() {
                 ""
             )}
             <div className={styles.cartContainer}>
-                {cart.length !== 0
-                    ? cart.map((item) => {
-                          return (
-                              <div
-                                  key={item.id}
-                                  id={item.id}
-                                  className={styles.cartItemContainer}
-                              >
-                                  <img
-                                      className={styles.image}
-                                      src={item.image}
-                                      alt={item.title}
-                                  />
-                                  <div className="product-info">
-                                      <div className="price">${item.price}</div>
-                                      <div className="title">{item.title}</div>
-                                      <div className="rating">
-                                          Rating: {item.rating.rate}
-                                      </div>
-                                      <div className="count">
-                                          Quantity: {item.count}
-                                      </div>
-                                  </div>
-                              </div>
-                          );
-                      })
-                    : "Cart is empty"}
+                {cart.length !== 0 ? (
+                    cart.map((item) => {
+                        return (
+                            <div
+                                key={item.id}
+                                id={item.id}
+                                className={styles.cartItemContainer}
+                            >
+                                <img
+                                    className={styles.image}
+                                    src={item.image}
+                                    alt={item.title}
+                                />
+                                <div className={styles.productInfo}>
+                                    <div className={styles.price}>
+                                        $ {item.price}
+                                    </div>
+                                    <div className={styles.title}>
+                                        {item.title}
+                                    </div>
+                                    <div className="rating">
+                                        <StarsFromRatings
+                                            rating={item.rating.rate}
+                                        />
+                                    </div>
+                                    <div className={styles.count}>
+                                        Quantity: {item.count}
+                                    </div>
+                                </div>
+                            </div>
+                        );
+                    })
+                ) : (
+                    <div class={styles.emptyCart}>
+                        Cart is empty!
+                        <br />
+                        ¯\_(ツ)_/¯
+                    </div>
+                )}
             </div>
             <CheckOutDialog />
         </div>

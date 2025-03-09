@@ -1,0 +1,44 @@
+.checkout-dialog {
+    margin: auto;
+    border: 2px solid;
+    border-radius: 20px;
+}
+
+::backdrop {
+    backdrop-filter: blur(2px);
+}
+
+.container {
+    padding: 20px 40px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.content {
+    flex: 1;
+    color: var(--secondary);
+}
+
+.congrats-svg {
+    transform: scale(1.5) translate(20%, 10%);
+    color: var(--accent);
+}
+
+.close-button {
+    background: var(--primary);
+    color: var(--bg);
+    padding: 10px 20px;
+    border-radius: 20px;
+    transition: 0.5s transform;
+    position: relative;
+}
+
+.close-button:hover {
+    transform: scale(1.05);
+}
+
+.close-button:active {
+    transition-duration: 0.25s;
+    transform: scale(1);
+}
