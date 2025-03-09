@@ -35,3 +35,38 @@
     font-family: "Italiana", sans-serif;
     font-weight: bold;
 }
+
+.product-content {
+    display: grid;
+    place-content: start;
+    grid-template-areas:
+        "info"
+        "description"
+        "cart";
+    gap: 20px;
+}
+
+.product-info {
+    grid-area: info;
+}
+
+.product-description {
+    grid-area: description;
+}
+
+.add-to-cart-container {
+    grid-area: cart;
+}
+
+@media (max-width: 500px) {
+    .product-container {
+        flex-direction: column;
+    }
+
+    .product-content {
+        grid-template-areas:
+            "cart"
+            "info"
+            "description";
+    }
+}

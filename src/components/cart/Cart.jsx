@@ -1,6 +1,7 @@
 import { useOutletContext } from "react-router-dom";
 import styles from "./Cart.module.css";
 import CheckOutDialog from "./CheckoutDialog";
+import { roundedValue } from "../../utilFunctions";
 
 function Cart() {
     const { cart, setCart } = useOutletContext();
@@ -31,7 +32,7 @@ function Cart() {
                             Number of products purchased: {totalProducts}
                         </div>
                         <div className="total-price">
-                            Total Price: {totalPrice}
+                            Total Price: ${roundedValue(totalPrice, 1)}
                         </div>
                     </div>
                     <div className="checkout-btn-container">

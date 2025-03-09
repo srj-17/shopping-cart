@@ -47,25 +47,26 @@ function App() {
     // we could also use a set here
     const [cart, setCart] = useState([]);
 
-    function addToCartHandler(e) {
+    function addToCartHandler(e, id, quantity) {
         e.preventDefault();
-        e.stopPropagation();
-        const productId = +e.target.id;
+        id = +id;
+        quantity = +quantity;
+
         const targetProduct = products.find((product) => {
-            return product.id === productId;
+            return product.id === id;
         });
 
         // if the targetproduct already exists in the cart, just increase its count
-        if (cart.find((item) => item.id === productId)) {
+        if (cart.find((item) => item.id === id)) {
             const newCart = cart.map((item) => {
-                if (item.id === productId)
-                    return { ...item, count: item.count + 1 };
+                if (item.id === id)
+                    return { ...item, count: item.count + quantity };
                 else return item;
             });
 
             setCart(newCart);
         } else {
-            setCart([...cart, { ...targetProduct, count: 1 }]);
+            setCart([...cart, { ...targetProduct, count: quantity }]);
         }
     }
 
