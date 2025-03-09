@@ -49,6 +49,7 @@ function Cart() {
                           return (
                               <div
                                   key={item.id}
+                                  id={item.id}
                                   className={styles.cartItemContainer}
                               >
                                   <img

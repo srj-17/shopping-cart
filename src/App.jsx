@@ -22,6 +22,7 @@ function useProducts() {
                     return {
                         id: data.id,
                         title: data.title,
+                        description: data.description,
                         price: data.price,
                         rating: data.rating,
                         image: data.image,
@@ -48,6 +49,7 @@ function App() {
 
     function addToCartHandler(e) {
         e.preventDefault();
+        e.stopPropagation();
         const productId = +e.target.id;
         const targetProduct = products.find((product) => {
             return product.id === productId;
@@ -62,7 +64,6 @@ function App() {
             });
 
             setCart(newCart);
-            console.log(newCart);
         } else {
             setCart([...cart, { ...targetProduct, count: 1 }]);
         }

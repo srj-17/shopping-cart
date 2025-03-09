@@ -1,8 +1,15 @@
 import { useOutletContext } from "react-router-dom";
 import styles from "./ProductPage.module.css";
+import { useNavigate } from "react-router-dom";
 
 function ProductPage() {
+    const navigate = useNavigate();
     const { products, loading, error, addToCartHandler } = useOutletContext();
+
+    function handleProductClick(e) {
+        const id = e.target.closest(".product-container").id;
+        navigate(`/product/${id}`);
+    }
 
     if (error)
         return (
@@ -21,7 +28,12 @@ function ProductPage() {
                     {products.map((product) => {
                         return (
                             <div
-                                className={styles.productContainer}
+                                className={
+                                    styles.productContainer +
+                                    " product-container"
+                                }
+                                id={product.id}
+                                onClick={handleProductClick}
                                 key={product.id}
                             >
                                 <img
@@ -37,15 +49,6 @@ function ProductPage() {
                                     <div className="rating">
                                         Rating: {product.rating.rate}
                                     </div>
-                                </div>
-                                <div className="add-to-cart">
-                                    <button
-                                        id={product.id}
-                                        className={styles.button}
-                                        onClick={addToCartHandler}
-                                    >
-                                        Add to cart
-                                    </button>
                                 </div>
                             </div>
                         );
