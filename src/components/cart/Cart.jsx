@@ -90,7 +90,7 @@ function Cart() {
                         );
                     })
                 ) : (
-                    <div class={styles.emptyCart}>
+                    <div className={styles.emptyCart}>
                         Cart is empty!
                         <br />
                         ¯\_(ツ)_/¯
