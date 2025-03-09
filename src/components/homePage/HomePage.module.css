@@ -20,6 +20,15 @@
     text-shadow: 2px -2px 8px black;
 }
 
+@media (max-width: 500px) {
+    .content {
+        padding: 20px;
+        top: 0%;
+        color: var(--primary);
+        text-shadow: 2px -2px 8px white;
+    }
+}
+
 .content-header {
     font-family: "Italiana", sans-serif;
     font-weight: 400;

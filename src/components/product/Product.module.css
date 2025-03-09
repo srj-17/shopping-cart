@@ -120,15 +120,17 @@
     font-size: 2rem;
 }
 
-@media (max-width: 500px) {
+@media (max-width: 700px) {
     .product-container {
         flex-direction: column;
+        align-items: center;
     }
 
     .product-content {
         grid-template-areas:
-            "cart"
             "info"
+            "cart"
             "description";
+        padding-bottom: 20px;
     }
 }

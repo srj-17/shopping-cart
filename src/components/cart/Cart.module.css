@@ -116,3 +116,10 @@
     /*color: var(--secondary);*/
     opacity: 0.4;
 }
+
+@media (max-width: 500px) {
+    .checkout-container {
+        flex-direction: column;
+        align-items: start;
+    }
+}
