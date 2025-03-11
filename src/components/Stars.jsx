@@ -15,7 +15,7 @@ function StarsFromRatings({ rating }) {
     }
 
     return (
-        <div className="stars">
+        <div data-testid="stars" className="stars">
             {stars.map((star, index) =>
                 star === "fullStar" ? (
                     <svg

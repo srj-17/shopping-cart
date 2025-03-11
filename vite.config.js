@@ -9,4 +9,9 @@ export default defineConfig({
             localsConvention: "camelCaseOnly",
         },
     },
+    test: {
+        environment: "jsdom",
+        globals: true,
+        setupFiles: "./tests/setup.js",
+    },
 });

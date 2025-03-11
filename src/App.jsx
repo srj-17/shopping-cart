@@ -75,7 +75,7 @@ function App() {
     }, 0);
 
     return (
-        <div className="container">
+        <div data-testid="container" className="container">
             <NavBar cartProductsCount={totalCartProducts} />
             <Outlet
                 context={{

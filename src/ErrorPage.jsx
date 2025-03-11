@@ -3,7 +3,6 @@ import { Link } from "react-router-dom";
 
 function ErrorPage() {
     const error = useRouteError();
-    console.log(error);
     return (
         <div className="error-page">
             <h1> Oops </h1>

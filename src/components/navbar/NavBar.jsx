@@ -1,5 +1,6 @@
 import styles from "./NavBar.module.css";
 import { Link } from "react-router-dom";
+import PropTypes from "prop-types";
 
 function NavBar({ cartProductsCount }) {
     return (
@@ -32,5 +33,9 @@ function NavBar({ cartProductsCount }) {
         </nav>
     );
 }
+
+NavBar.propTypes = {
+    cartProductsCount: PropTypes.number,
+};
 
 export default NavBar;
