@@ -1,4 +1,5 @@
 import { useOutletContext } from "react-router-dom";
+import { useMemo } from "react";
 import styles from "./Cart.module.css";
 import CheckOutDialog from "./CheckoutDialog";
 import { roundedValue } from "../../utilFunctions";
@@ -13,15 +14,19 @@ function Cart() {
         setCart([]);
     }
 
-    const totalProducts = cart.reduce((sum, item) => {
-        return sum + item.count;
-    }, 0);
+    const totalProducts = useMemo(() => {
+        return cart.reduce((sum, item) => {
+            return sum + item.count;
+        }, 0);
+    }, [cart]);
 
-    const totalPrice = cart.reduce((price, item) => {
-        const itemCount = item.count;
-        const itemPrice = item.price;
-        return price + itemCount * itemPrice;
-    }, 0);
+    const totalPrice = useMemo(() => {
+        return cart.reduce((price, item) => {
+            const itemCount = item.count;
+            const itemPrice = item.price;
+            return price + itemCount * itemPrice;
+        }, 0);
+    }, [cart]);
 
     return (
         <div className={styles.cartsPage}>
